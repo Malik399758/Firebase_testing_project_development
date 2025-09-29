@@ -54,13 +54,18 @@ class _UpdateNameState extends State<UpdateName> {
                     print('Update name Add : ${value.userName}');
                   },
                       child: Center(child: Text('Update Add name'))),
-        /*          ElevatedButton(onPressed: (){
+                  ElevatedButton(onPressed: (){
                     value.clearName();
                     print('Empty : ${value.userName}');
                   },
-                      child: Center(child: Text('Clear name'))),*/
+                      child: Center(child: Text('Clear name'))),
                   Divider(),
-                  Text(value.userName.toString())
+                  Text(
+                    value.userName.isNotEmpty ? 'Name : ${value.userName.toString()}' :
+                    'Empty Name: ${value.userName.toString()}',style: TextStyle(
+                      fontSize: 18,fontWeight: FontWeight.w600
+                  ),
+                  )
                 ],
               );
             },

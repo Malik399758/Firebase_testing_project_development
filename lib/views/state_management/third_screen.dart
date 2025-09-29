@@ -27,7 +27,12 @@ class _ThirdScreenState extends State<ThirdScreen> {
         backgroundColor: Colors.green,
       ),
       body: Consumer<UserProvider>(builder: (context,value,_){
-        return Center(child: Text(value.userName));
+        return Center(child:   Text(
+          value.userName.isNotEmpty ? 'Name : ${value.userName.toString()}' :
+          'Empty Name: ${value.userName.toString()}',style: TextStyle(
+            fontSize: 18,fontWeight: FontWeight.w600
+        ),
+        ));
       }),
     );
   }

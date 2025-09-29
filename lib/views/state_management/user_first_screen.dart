@@ -59,7 +59,12 @@ class _UserFirstScreenState extends State<UserFirstScreen> {
                   },
                       child: Center(child: Text('Clear name'))),
                   Divider(),
-                  Text(value.userName.toString())
+                  Text(
+                    value.userName.isNotEmpty ? 'Name : ${value.userName.toString()}' :
+                        'Empty Name: ${value.userName.toString()}',style: TextStyle(
+                    fontSize: 18,fontWeight: FontWeight.w600
+                  ),
+                  )
                 ],
               );
             },
