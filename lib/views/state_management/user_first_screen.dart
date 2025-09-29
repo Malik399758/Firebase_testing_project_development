@@ -31,44 +31,42 @@ class _UserFirstScreenState extends State<UserFirstScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Center(
-          child: Consumer<UserProvider>(
-            builder: (context,value,_){
-              return Column(
-                spacing: 20,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextFormField(
-                    controller: nameController,
-                    decoration: InputDecoration(
-                        hintText: 'Enter you name',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        )
-                    ),
+        child: Consumer<UserProvider>(
+          builder: (context,value,_){
+            return Column(
+              spacing: 20,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextFormField(
+                  controller: nameController,
+                  decoration: InputDecoration(
+                      hintText: 'Enter you name',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      )
                   ),
-                  ElevatedButton(onPressed: (){
-                    value.getUser(nameController.text.trim());
-                    nameController.clear();
-                    print('Add : ${value.userName}');
-                  },
-                      child: Center(child: Text('Add name'))),
-                  ElevatedButton(onPressed: (){
-                    value.clearName();
-                    print('Empty : ${value.userName}');
-                  },
-                      child: Center(child: Text('Clear name'))),
-                  Divider(),
-                  Text(
-                    value.userName.isNotEmpty ? 'Name : ${value.userName.toString()}' :
-                        'Empty Name: ${value.userName.toString()}',style: TextStyle(
-                    fontSize: 18,fontWeight: FontWeight.w600
-                  ),
-                  )
-                ],
-              );
-            },
-          ),
+                ),
+                ElevatedButton(onPressed: (){
+                  value.getUser(nameController.text.trim());
+                  nameController.clear();
+                  print('Add : ${value.userName}');
+                },
+                    child: Center(child: Text('Add name'))),
+                ElevatedButton(onPressed: (){
+                  value.clearName();
+                  print('Empty : ${value.userName}');
+                },
+                    child: Center(child: Text('Clear name'))),
+                Divider(),
+                Text(
+                  value.userName.isNotEmpty ? 'Name : ${value.userName.toString()}' :
+                      'Empty Name: ${value.userName.toString()}',style: TextStyle(
+                  fontSize: 18,fontWeight: FontWeight.w600
+                ),
+                )
+              ],
+            );
+          },
         ),
       ),
     );

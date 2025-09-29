@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_testing_project/controllers/item_provider.dart';
 import 'package:firebase_testing_project/controllers/user_controller.dart';
+import 'package:firebase_testing_project/views/screens/cart_screens/list_ui_screen.dart';
 import 'package:firebase_testing_project/views/screens/sign_up_screen.dart';
 import 'package:firebase_testing_project/views/state_management/user_first_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider())
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => ItemProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -30,7 +33,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: UserFirstScreen()
+        home: ListUiScreen()
+        //UserFirstScreen()
         //SignUpScreen()
       ),
     );
