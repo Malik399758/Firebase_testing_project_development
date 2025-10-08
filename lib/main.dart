@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_testing_project/controllers/item_provider.dart';
 import 'package:firebase_testing_project/controllers/user_controller.dart';
+import 'package:firebase_testing_project/views/firebase/user_profile/sign_up_screen.dart';
+import 'package:firebase_testing_project/views/firebase/user_profile/title_and_desc_screen.dart';
 import 'package:firebase_testing_project/views/screens/cart_screens/list_ui_screen.dart';
 import 'package:firebase_testing_project/views/screens/sign_up_screen.dart';
 import 'package:firebase_testing_project/views/state_management/user_first_screen.dart';
@@ -33,7 +35,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: ListUiScreen()
+        home: TitleAndDescScreen()
+        //SignUpScreen1()
+        //ListUiScreen()
         //UserFirstScreen()
         //SignUpScreen()
       ),

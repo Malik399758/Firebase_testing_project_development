@@ -4,7 +4,6 @@
 import 'package:firebase_testing_project/controllers/item_provider.dart';
 import 'package:firebase_testing_project/controllers/user_controller.dart';
 import 'package:firebase_testing_project/views/screens/cart_screens/cart_screen.dart';
-import 'package:firebase_testing_project/views/state_management/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
