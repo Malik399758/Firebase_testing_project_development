@@ -1,5 +1,6 @@
 
 import 'package:firebase_testing_project/views/firebase/user_profile/firebase_service.dart';
+import 'package:firebase_testing_project/views/firebase/user_profile/get_data_firebase.dart';
 import 'package:firebase_testing_project/views/firebase/user_profile/get_screen.dart';
 import 'package:firebase_testing_project/views/firebase/user_profile/user_profile_model.dart';
 import 'package:flutter/material.dart';
@@ -28,18 +29,17 @@ class _MainUiScreenState extends State<MainUiScreen> {
       isLoading = true;
     });
     try{
-      final profile = ProfileModel(
-          firstName: firstNameController.text.trim(),
-          lastName: lastNameController.text.trim(),
-          email: emailController.text.trim(),
-          city: cityController.text.trim());
 
-      String? result = await FirebaseService().saveData(profile);
+      String? result = await FirebaseService().saveData(
+          firstNameController.text.trim(),
+          lastNameController.text.trim(),
+          emailController.text.trim(),
+          cityController.text.trim());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result ?? 'unknown error')));
 
 
       if(result == 'success'){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => GetAndUpdateScreen()));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => GetAndUpdateScreen()));
       }
       setState(() {
         isLoading = false;
@@ -115,7 +115,11 @@ class _MainUiScreenState extends State<MainUiScreen> {
                 child: Center(child: isLoading ? Center(child: CircularProgressIndicator()) :
                 Text('Save')),
               ),
-            )
+            ),
+            IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>
+              GetDataFirebase()));
+            }, icon: Icon(Icons.arrow_forward))
           ],
         ),
       )

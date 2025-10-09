@@ -10,40 +10,69 @@ class FirebaseService{
   
   /// save data
 
-  Future<String?> saveData(ProfileModel profile)async{
-
-    try{
+  Future<String?> saveData(String firstName, String lastName, String email, String city) async {
+    try {
       final userId = FirebaseAuth.instance.currentUser?.uid;
-      await db.collection('Users_profile').doc(userId).collection('profile').doc('mainProfile').set(profile.toMap());
-      print('user id -----> ${userId}');
+
+      if (userId == null) {
+        return 'user not logged in';
+      }
+
+      final profile = ProfileModel(
+        uid: userId,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        city: city,
+      );
+
+      await db.collection('Main_Collection').add({
+        ...profile.toMap(),
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+
+      print('User ID -----> $userId');
       return 'success';
-    }catch(e){
+    } catch (e) {
+      print('Error saving data: $e');
       return 'something went wrong';
     }
   }
 
+
   /// fetch data
 
-  Future<ProfileModel?> fetchData()async{
-    try{
+  Future<List<ProfileModel>> fetchAllProfiles() async {
+    try {
       final userId = FirebaseAuth.instance.currentUser?.uid;
-      final snapshot = await db.collection('Users_profile').doc(userId).collection('profile').doc('mainProfile').get();
 
-
-      if(snapshot.exists){
-        final data = snapshot.data();
-        print('Data ------> ${data}');
-        return ProfileModel.fromMap(data!);
-      }else{
-        print('user data not found');
-        return null;
+      if (userId == null) {
+        print('User not logged in');
+        return [];
       }
 
-    }catch(e){
-      print('Error fetching data: $e');
-      return null;
+      final querySnapshot = await db
+          .collection('Main_Collection')
+          .where('uid', isEqualTo: userId).orderBy('createdAt').
+          get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        final profiles = querySnapshot.docs.map((doc) {
+          return ProfileModel.fromMap(doc.data());
+        }).toList();
+
+        print('Fetched ${profiles.length} profile(s)');
+        return profiles;
+      } else {
+        print('No profiles found for user');
+        return [];
+      }
+    } catch (e) {
+      print('Error fetching profiles: $e');
+      return [];
     }
   }
+
 
 
   /// ------------- content -----------------
@@ -64,7 +93,7 @@ class FirebaseService{
   }
 
   /// get content
-
+/*
   Future<List<ContentModel>> contentFetch() async {
     final userId = FirebaseAuth.instance.currentUser?.uid;
     print('Fetching content for user: $userId');
@@ -92,7 +121,7 @@ class FirebaseService{
       print('Fetch error: $e');
       return [];
     }
-  }
+  }*/
 
 
 

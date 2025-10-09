@@ -32,8 +32,8 @@ class _TitleAndDescScreenState extends State<TitleAndDescScreen> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(result ?? 'unknown error')));
 
       if(result == 'success'){
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>
-        ContentGet()));
+       /* Navigator.push(context, MaterialPageRoute(builder: (context) =>
+        ContentGet()));*/
       }
       setState(() {
         isLoading = false;

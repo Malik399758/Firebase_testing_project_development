@@ -23,7 +23,7 @@ class _GetAndUpdateScreenState extends State<GetAndUpdateScreen> {
   @override
   void initState() {
     super.initState();
-    _getUserData();
+    //_getUserData();
   }
 
 
@@ -31,9 +31,10 @@ class _GetAndUpdateScreenState extends State<GetAndUpdateScreen> {
 
   /// get
 
+/*
   Future<void> _getUserData()async{
     try{
-      final profile = await FirebaseService().fetchData();
+     // final profile = await FirebaseService().fetchData();
 
 
       if(profile != null){
@@ -47,10 +48,11 @@ class _GetAndUpdateScreenState extends State<GetAndUpdateScreen> {
     }
   }
 
+*/
 
   /// update
 
-  Future<void> _updateData()async{
+ /* Future<void> _updateData()async{
     try{
       final profile = ProfileModel(
           firstName: firstNameController.text.trim(),
@@ -69,7 +71,7 @@ class _GetAndUpdateScreenState extends State<GetAndUpdateScreen> {
     }catch(e){
       print('Update error------> ${e.toString()}');
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +125,7 @@ class _GetAndUpdateScreenState extends State<GetAndUpdateScreen> {
               SizedBox(height: 20,),
               GestureDetector(
                 onTap: ()async{
-                  await _updateData();
+                 // await _updateData();
                   //await _getUserData();
                 },
                 child: Container(

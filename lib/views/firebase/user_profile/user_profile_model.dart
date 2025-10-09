@@ -1,5 +1,6 @@
 
 class ProfileModel{
+  final String uid;
   final String firstName;
   final String lastName;
   final String email;
@@ -7,6 +8,7 @@ class ProfileModel{
 
 
   ProfileModel({
+    required this.uid,
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -17,6 +19,7 @@ class ProfileModel{
 
  Map<String ,dynamic> toMap(){
    return {
+     'uid' : uid,
      'firstName' : firstName,
      'lastName' : lastName,
      'email' : email,
@@ -29,6 +32,7 @@ class ProfileModel{
   factory ProfileModel.fromMap(Map<String, dynamic> map) {
     print('Mapping data from Firestore: $map');
     return ProfileModel(
+      uid: map['uid'],
       firstName: map['firstName'] ?? '',
       lastName: map['lastName'] ?? '',
       email: map['email'] ?? '',

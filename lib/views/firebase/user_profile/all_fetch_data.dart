@@ -17,24 +17,24 @@ class _AllFetchDataState extends State<AllFetchData> {
 
   /// fetch
 
-  Future<void> fetchAllData()async{
-    try{
-      final data = await FirebaseService().fetchData();
-      if(data != null){
-        setState(() {
-          profile = data;
-        });
-      }
-    }catch(e){
-      print('Fetch error ----> ${e.toString()}');
-    }
-  }
+  // Future<void> fetchAllData()async{
+  //   try{
+  //     final data = await FirebaseService().fetchData();
+  //     if(data != null){
+  //       setState(() {
+  //         profile = data;
+  //       });
+  //     }
+  //   }catch(e){
+  //     print('Fetch error ----> ${e.toString()}');
+  //   }
+  // }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchAllData();
+    //fetchAllData();
   }
   @override
   Widget build(BuildContext context) {

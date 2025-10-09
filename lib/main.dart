@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
-        home: TitleAndDescScreen()
-        //SignUpScreen1()
+        home: //TitleAndDescScreen()
+        SignUpScreen1()
         //ListUiScreen()
         //UserFirstScreen()
         //SignUpScreen()

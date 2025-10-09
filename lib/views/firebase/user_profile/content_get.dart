@@ -15,11 +15,11 @@ class _ContentGetState extends State<ContentGet> {
   @override
   void initState() {
     super.initState();
-    _contentGet();
+   // _contentGet();
   }
 
   /// Fetch content data from Firebase
-  Future<void> _contentGet() async {
+  /*Future<void> _contentGet() async {
     try {
       final data = await FirebaseService().contentFetch();
       if (data.isNotEmpty) {
@@ -30,7 +30,7 @@ class _ContentGetState extends State<ContentGet> {
     } catch (e) {
       print('Error -----> ${e.toString()}');
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
